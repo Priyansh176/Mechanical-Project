@@ -1,4 +1,4 @@
-#foot{
+#footer{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,8 +18,31 @@ body{
 
 #btn:hover{
     animation-duration: 0.7s;
-    height: 30px;
-    width: 78px;
-    font-size: 15px;
+    transform: scale(1.1);
 }
 
+#select{
+    display: flex;
+    align-items: center;
+}
+
+#text1{
+    margin-right: 10px;
+}
+
+#forces{
+    height: 20px;
+}
+
+.inputBox{
+    text-align: center;
+    width: 35px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+h2{
+    height: 17px;
+    text-align: center;
+    font-size: 40px;
+}

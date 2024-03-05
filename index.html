@@ -8,10 +8,28 @@
 
 </head>
 <body>
-<div id="foot">
-    <button id="btn">Calculate</button>
+
+<h2>SFD and BMD</h2>    
+<div id="select">
+    <p id="text1">Select number of point forces</p>
+    <select id="forces">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>  
 </div>
-    
+
+<div id="distance">
+    Distance of first force from extreme left<input type="text" placeholder="in m" id="f1" class="inputBox"><br>
+    Distance of second force from extreme left<input type="text" placeholder="in m" id="f2" class="inputBox"><br>
+    Distance of third force from extreme left<input type="text" placeholder="in m" id="f3" class="inputBox"><br>
+</div>
+
+<footer id="footer">
+    <button id="btn">Calculate</button>
+</footer>
+
 <script src="script.js"></script>
+
 </body>
 </html>
