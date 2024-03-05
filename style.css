@@ -1,0 +1,25 @@
+#foot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn{
+    color: black;
+    border-radius: 10px;
+    height: 27px;
+    width: 75px;
+    background-color: aquamarine;
+}
+
+body{
+    background-color:azure;
+}
+
+#btn:hover{
+    animation-duration: 0.7s;
+    height: 30px;
+    width: 78px;
+    font-size: 15px;
+}
+
