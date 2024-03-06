@@ -1,12 +1,12 @@
 var forces = 1
 
+var p3 = document.querySelector("#p3")
+
 let btn1 = document.querySelector("#btnconfirm")
 btn1.addEventListener("click",genLine)
 
 function genLine(){
     forces = document.querySelector("select").value
-    btn1.disabled = false
-
     if(forces == '2'){
         let el1 = document.createElement("p")
         let p1 = document.querySelector("#p1")
