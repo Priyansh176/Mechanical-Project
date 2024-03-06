@@ -10,19 +10,25 @@ function genLine(){
     if(forces == '2'){
         let el1 = document.createElement("p")
         let p1 = document.querySelector("#p1")
-        el1.innerHTML = '<p id="p2">Distance and Magnitude of second force from extreme left<input type="text" placeholder="in m" id="f2" class="inputBox"><input type="text" placeholder="in N" id="F2" class="inputBox"></p><br>'
+        el1.innerHTML = '<p id="p2">Distance from extreme left and Magnitude of second force<input type="text" placeholder="in m" id="f2" class="inputBox"><input type="text" placeholder="in N" id="F2" class="inputBox"></p><br>'
         p1.after(el1)
+        document.querySelector("#pF1").style.visibility = "visible"
+        document.querySelector("#pF2").style.visibility = "visible"
+        document.querySelector("#pF3").style.visibility = "hidden"
         btn1.disabled = true        
     }
     if(forces == '3'){
         let el1 = document.createElement("p")
         let p1 = document.querySelector("#p1")
-        el1.innerHTML = '<p id="p2">Distance and Magnitude of second force from extreme left<input type="text" placeholder="in m" id="f2" class="inputBox"><input type="text" placeholder="in N" id="F2" class="inputBox"></p><br>'
+        el1.innerHTML = '<p id="p2">Distance from extreme left and Magnitude of second force<input type="text" placeholder="in m" id="f2" class="inputBox"><input type="text" placeholder="in N" id="F2" class="inputBox"></p><br>'
         p1.after(el1)
         let el2 = document.createElement("p")
         let p2 = document.querySelector("#p2")
-        el2.innerHTML = '<p id="p3">Distance and Magnitude of third force from extreme left<input type="text" placeholder="in m" id="f3" class="inputBox"><input type="text" placeholder="in N" id="F3" class="inputBox"></p><br>'
+        el2.innerHTML = '<p id="p3">Distance from extreme left and Magnitude of third force<input type="text" placeholder="in m" id="f3" class="inputBox"><input type="text" placeholder="in N" id="F3" class="inputBox"></p><br>'
         p2.after(el2)
+        document.querySelector("#pF1").style.visibility = "visible"
+        document.querySelector("#pF2").style.visibility = "visible"
+        document.querySelector("#pF3").style.visibility = "visible"
         btn1.disabled = true
     }
 }
