@@ -89,6 +89,30 @@ h2{
     margin-top: 10px;
 }
 
-/* #reactionA{
+#reactionA{
+    position: relative;
+    left: 1138px;
+    top: 23px;
+}
 
-} */
+#reactionB{
+    position: relative;
+    left: 358px;
+    top: 23px;
+}
+
+#pF1{
+    position:relative;
+    left: 965px;
+    top: -21px;
+}
+#pF2{
+    position:relative;
+    left: 530px;
+    top: -21px;
+}
+#pF3{
+    position:relative;
+    left: 727px;
+    top: -21px;
+}
