@@ -48,13 +48,12 @@ h2{
 }
 
 #beam{
+    margin: auto;
     height: 50px;
-    width: 700px;
+    width: 50%;
     background-color: rgb(74, 36, 190);
 }
 #beamDiagram{
-    display: flex;
-    justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
 }
