@@ -29,10 +29,13 @@ function genLine(){
 
 
 let button = document.querySelector("#btn");
-button.onclick = () => {
+button.addEventListener("click",getVals)
+
+function getVals(){
     if(forces=='1'){
         var dist1 = document.querySelector("#f1").value
         var force1 = document.querySelector("#F1").value
+        var length = document.querySelector("f0").value
     }
     else if(forces=='2'){
         var dist1 = document.querySelector("#f1").value
