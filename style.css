@@ -16,7 +16,7 @@ body{
     background-color:azure;
 }
 
-#btn:hover{
+#btn:hover , #btnconfirm:hover{
     animation-duration: 0.7s;
     transform: scale(1.1);
 }
@@ -65,4 +65,14 @@ h2{
 
 #reactionB{
     transform: scale(2,4);
+}
+
+#btnconfirm{
+    color: black;
+    margin-left: 10px;
+    border-radius: 10px;
+    height: 22px;
+    width: 60px;
+    background-color: aquamarine;
+    text-align: center;
 }
