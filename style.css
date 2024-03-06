@@ -47,13 +47,22 @@ h2{
     font-size: 40px;
 }
 
+#beamDiagram{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 #beam{
     margin: auto;
     height: 50px;
     width: 50%;
     background-color: rgb(74, 36, 190);
 }
-#beamDiagram{
-    margin-top: 30px;
-    margin-bottom: 30px;
+
+#reactionA{
+    transform: scale(2,4);
+}
+
+#reactionB{
+    transform: scale(2,4);
 }
