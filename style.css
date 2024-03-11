@@ -124,3 +124,8 @@ h2{
     text-align:right;
     margin-top: 177px;
 }
+
+#text{
+    size: 10px;
+    margin-left: 5px;
+}
