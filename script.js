@@ -58,28 +58,40 @@ function getVals(){
         }
 
         let valuesForPlot = reactions_sfbdCalc()
-        const xValues = []
-        const yValues = []
-            for (let x = 0; x <= length; x += 0.001) {
-                if(x <= load[0][0]){
-                    yValues.push(valuesForPlot[2])
-                    xValues.push(x);
-                }
-                else if(x >= load[0][0]){
-                yValues.push(valuesForPlot[3])
-                xValues.push(x)
-                }
-            }       
 
-    const data = [{
-    x: xValues,
-    y: yValues,
-    mode: "lines"
-    }]
+        const xValues1 = []
+        const yValues1 = []
+        const xValues2 = [0,load[0][0],length]
+        const yValues2 = [0,valuesForPlot[4],0]
 
-    const layout = {title: "SFD"}
+        for (let x = 0; x <= length; x += 0.001) {
+            if(x <= load[0][0]){
+                yValues1.push(valuesForPlot[2])
+                xValues1.push(x);
+            }
+            else if(x >= load[0][0]){
+                yValues1.push(valuesForPlot[3])
+                xValues1.push(x)
+            }
+        }       
 
-    Plotly.newPlot("SFD", data, layout)
+        const data1 = [{
+            x: xValues1,
+            y: yValues1,
+            mode: "lines"
+        }]
+
+        const data2 = [{
+            x:xValues2,
+            y:yValues2,
+            mode: "lines"
+        }]
+
+        const layout1 = {title: "SFD"}
+        const layout2 = {title: "BMD"}
+
+        Plotly.newPlot("SFD", data1, layout1)
+        Plotly.newPlot("BMD", data2, layout2)
 
     }
 
@@ -106,32 +118,45 @@ function getVals(){
         }
 
         let valuesForPlot = reactions_sfbdCalc()
-        const xValues = []
-        const yValues = []
-            for (let x = 0; x <= length; x += 0.001) {
-                if(x <= load[0][0]){
-                    yValues.push(valuesForPlot[2])
-                    xValues.push(x);
-                }
-                else if(x >= load[0][0] && x<=load[1][0]){
-                yValues.push(valuesForPlot[3])
-                xValues.push(x)
-                }
-                else if(x >= load[1][0]){
-                    yValues.push(valuesForPlot[4])
-                    xValues.push(x)
-                    }
-            }       
 
-    const data = [{
-    x: xValues,
-    y: yValues,
-    mode: "lines"
-    }]
+        const xValues1 = []
+        const yValues1 = []
+        const xValues2 = [0,load[0][0],load[1][0],length]
+        const yValues2 = [0,valuesForPlot[5],valuesForPlot[6],0]
 
-    const layout = {title: "SFD"}
+        for (let x = 0; x <= length; x += 0.001) {
+            if(x <= load[0][0]){
+                yValues1.push(valuesForPlot[2])
+                xValues1.push(x);
+            }
+            else if(x >= load[0][0] && x<=load[1][0]){
+                yValues1.push(valuesForPlot[3])
+                xValues1.push(x)
+            }
+            else if(x >= load[1][0]){
+                yValues1.push(valuesForPlot[4])
+                xValues1.push(x)
+            }
+        }       
 
-    Plotly.newPlot("SFD", data, layout)
+        const data1 = [{
+            x: xValues1,
+            y: yValues1,
+            mode: "lines"
+        }]
+
+        const data2 = [{
+            x:xValues2,
+            y:yValues2,
+            mode: "lines"
+        }]
+
+        const layout1 = {title: "SFD"}
+        const layout2 = {title: "BMD"}
+
+        Plotly.newPlot("SFD", data1, layout1)
+        Plotly.newPlot("BMD", data2, layout2)
+
     }
 
     else if(forces=='3'){
@@ -145,7 +170,6 @@ function getVals(){
         let load = [[dist1,-force1],[dist2,-force2],[dist3,-force3]]
         
         function reactions_sfbdCalc(){
-            //for 3 forces
             let Vb = ((-load[0][0]*load[0][1])+(-load[1][0]*load[1][1])+(-load[2][0]*load[2][1]))/length
             let Va = -load[0][1]-load[1][1]-load[2][1]-Vb
         
@@ -162,35 +186,47 @@ function getVals(){
         }
 
         let valuesForPlot = reactions_sfbdCalc()
-        const xValues = []
-        const yValues = []
-            for (let x = 0; x <= length; x += 0.001) {
-                if(x <= load[0][0]){
-                    yValues.push(valuesForPlot[2])
-                    xValues.push(x);
-                }
-                else if(x >= load[0][0] && x<=load[1][0]){
-                yValues.push(valuesForPlot[3])
-                xValues.push(x)
-                }
-                else if(x >= load[1][0] && x<=load[2][0]){
-                    yValues.push(valuesForPlot[4])
-                    xValues.push(x)
-                }
-                else if(x >= load[2][0]){
-                    yValues.push(valuesForPlot[5])
-                    xValues.push(x)
-                }
-            }       
 
-    const data = [{
-    x: xValues,
-    y: yValues,
-    mode: "lines"
-    }]
+        const xValues1 = []
+        const yValues1 = []
+        const xValues2 = [0,load[0][0],load[1][0],load[2][0],length]
+        const yValues2 = [0,valuesForPlot[6],valuesForPlot[7],valuesForPlot[8],0]
 
-    const layout = {title: "SFD"}
+        for (let x = 0; x <= length; x += 0.001) {
+            if(x <= load[0][0]){
+                yValues1.push(valuesForPlot[2])
+                xValues1.push(x);
+            }
+            else if(x >= load[0][0] && x<=load[1][0]){
+                yValues1.push(valuesForPlot[3])
+                xValues1.push(x)
+            }
+            else if(x >= load[1][0] && x<=load[2][0]){
+                yValues1.push(valuesForPlot[4])
+                xValues1.push(x)
+            }
+            else if(x >= load[2][0]){
+                yValues1.push(valuesForPlot[5])
+                xValues1.push(x)
+            }
+        }       
 
-    Plotly.newPlot("SFD", data, layout)
+        const data1 = [{
+        x: xValues1,
+        y: yValues1,
+        mode: "lines"
+        }]
+
+        const data2 = [{
+            x:xValues2,
+            y:yValues2,
+            mode: "lines"
+        }]
+
+        const layout1 = {title: "SFD"}
+        const layout2 = {title: "BMD"}
+
+        Plotly.newPlot("SFD", data1, layout1)
+        Plotly.newPlot("BMD", data2, layout2)
     }
 }
