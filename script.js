@@ -46,7 +46,6 @@ function getVals(){
         let load = [[dist1,-force1]]
         
         function reactions_sfbdCalc(){
-            //for 1 force
             let Vb = (-load[0][0]*load[0][1])/length
             let Va = -load[0][1]-Vb
             
@@ -59,7 +58,6 @@ function getVals(){
         }
 
         let valuesForPlot = reactions_sfbdCalc()
-        console.log(valuesForPlot)
         const xValues = []
         const yValues = []
             for (let x = 0; x <= length; x += 0.001) {
@@ -94,7 +92,6 @@ function getVals(){
         let load = [[dist1,-force1],[dist2,-force2]]
         
         function reactions_sfbdCalc(){
-            // for 2 forces
             let Vb = ((-load[0][0]*load[0][1])+(-load[1][0]*load[1][1]))/length
             let Va = -load[0][1]-load[1][1]-Vb
         
@@ -107,6 +104,34 @@ function getVals(){
             let reactions_sfbd = [Va,Vb,sf_1,sf_2,sf_3,m_1,m_2]
             return reactions_sfbd
         }
+
+        let valuesForPlot = reactions_sfbdCalc()
+        const xValues = []
+        const yValues = []
+            for (let x = 0; x <= length; x += 0.001) {
+                if(x <= load[0][0]){
+                    yValues.push(valuesForPlot[2])
+                    xValues.push(x);
+                }
+                else if(x >= load[0][0] && x<=load[1][0]){
+                yValues.push(valuesForPlot[3])
+                xValues.push(x)
+                }
+                else if(x >= load[1][0]){
+                    yValues.push(valuesForPlot[4])
+                    xValues.push(x)
+                    }
+            }       
+
+    const data = [{
+    x: xValues,
+    y: yValues,
+    mode: "lines"
+    }]
+
+    const layout = {title: "SFD"}
+
+    Plotly.newPlot("SFD", data, layout)
     }
 
     else if(forces=='3'){
@@ -135,14 +160,37 @@ function getVals(){
             let reactions_sfbd = [Va,Vb,sf_1,sf_2,sf_3,sf_4,m_1,m_2,m_3]
             return reactions_sfbd
         }
-    }
-}
 
+        let valuesForPlot = reactions_sfbdCalc()
+        const xValues = []
+        const yValues = []
+            for (let x = 0; x <= length; x += 0.001) {
+                if(x <= load[0][0]){
+                    yValues.push(valuesForPlot[2])
+                    xValues.push(x);
+                }
+                else if(x >= load[0][0] && x<=load[1][0]){
+                yValues.push(valuesForPlot[3])
+                xValues.push(x)
+                }
+                else if(x >= load[1][0] && x<=load[2][0]){
+                    yValues.push(valuesForPlot[4])
+                    xValues.push(x)
+                }
+                else if(x >= load[2][0]){
+                    yValues.push(valuesForPlot[5])
+                    xValues.push(x)
+                }
+            }       
 
+    const data = [{
+    x: xValues,
+    y: yValues,
+    mode: "lines"
+    }]
 
-function plotGraph(){
-    if(forces=='1'){
-        
+    const layout = {title: "SFD"}
 
+    Plotly.newPlot("SFD", data, layout)
     }
 }
