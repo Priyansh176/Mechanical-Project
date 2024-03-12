@@ -93,6 +93,9 @@ function getVals(){
         Plotly.newPlot("SFD", data1, layout1)
         Plotly.newPlot("BMD", data2, layout2)
 
+        document.querySelector("#SFD").style.border = "2px solid black"
+        document.querySelector("#BMD").style.border = "2px solid black"
+
     }
 
     else if(forces=='2'){
@@ -156,6 +159,9 @@ function getVals(){
 
         Plotly.newPlot("SFD", data1, layout1)
         Plotly.newPlot("BMD", data2, layout2)
+
+        document.querySelector("#SFD").style.border = "2px solid black"
+        document.querySelector("#BMD").style.border = "2px solid black"
 
     }
 
@@ -228,5 +234,8 @@ function getVals(){
 
         Plotly.newPlot("SFD", data1, layout1)
         Plotly.newPlot("BMD", data2, layout2)
+
+        document.querySelector("#SFD").style.border = "2px solid black"
+        document.querySelector("#BMD").style.border = "2px solid black"
     }
 }
