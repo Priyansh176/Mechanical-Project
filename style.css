@@ -34,7 +34,7 @@ body{
     align-items: center;
     border-style: solid;
     border-radius: 4px;
-
+    padding-right: 5px;
 }
 
 #text1{
@@ -69,7 +69,7 @@ h2{
     text-align: center;
     justify-content: center;
     font-family: Arial;
-    padding-top: 5px;
+    padding-top: 18px;
 }
 
 #beamDiagram{
@@ -105,8 +105,6 @@ h2{
 }
 
 #distance{
-    display: flex;
-    flex-direction: column;
     font-size: 22px;
 }
 
