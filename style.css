@@ -20,20 +20,34 @@ body{
     animation-duration: 0.7s;
     transform: scale(1.1);
 }
+#btn:active , #btnconfirm:active{
+    animation-duration: 0.7s;
+    opacity: 0.7;
+}
 
 #select{
+    margin-top: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 700px;
+    align-items: center;
+    border-style: solid;
+    border-radius: 4px;
+
 }
 
 #text1{
     margin-right: 10px;
     font-size: 22px;
+    padding-left: 10px;
 }
 
 #forces{
-    height: 20px;
-    width:40px;
+    height: 35px;
+    width:55px;
+    margin-right: 15px;
+    border-radius: 5px;
 }
 
 .inputBox{
@@ -44,9 +58,18 @@ body{
 }
 
 h2{
-    height: 17px;
-    text-align: center;
     font-size: 40px;
+    border-color: rgb(85, 221, 255);
+    margin: auto;
+    width: 500px;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 4px;
+    height: 60px;
+    text-align: center;
+    justify-content: center;
+    font-family: Arial;
+    padding-top: 5px;
 }
 
 #beamDiagram{
@@ -70,20 +93,27 @@ h2{
 #btnconfirm{
     color: black;
     margin-left: 10px;
-    border-radius: 10px;
-    height: 22px;
-    width: 60px;
-    background-color: aquamarine;
+    border-radius: 55px;
+    height: 45px;
+    width: 80px;
+    background-color: rgb(52, 164, 255);
     text-align: center;
+    font-size: medium;
+    color: white;
+    box-shadow: 2px 1.5px 1.5px gray;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #distance{
+    display: flex;
+    flex-direction: column;
     font-size: 22px;
 }
 
 #p0{
     margin-top: 10px;
     margin-bottom: 10px;
+    padding-left: 10px;
 }
 
 #p1{
@@ -124,8 +154,51 @@ h2{
     text-align:right;
     margin-top: 177px;
 }
-
-#text{
-    size: 10px;
-    margin-left: 5px;
+.div1{
+    padding-right: 15px;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.div2{
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    height: 50px;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-color: black;
+    border-style: solid;
+    align-items: center;
+}
+#f0{
+    margin-top: 50px;
+    margin-right: 20px;
+    border-radius: 3px;
+    width: 50px;
+    height: 25px;
+}
+.div3{
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-style: solid;
+    border-color: black;
+    padding-top: 10px;
+    align-items: center;
+}
+#div3_2{
+    margin-top: 30px;
+    padding-right: 5px;
+}
+#div3_1{
+    padding-left: 10px;
+}
+#f1,
+#F1{
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
 }
