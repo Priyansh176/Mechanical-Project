@@ -199,3 +199,7 @@ p{
     width: 60px;
     border-radius: 5px;
 }
+
+#graphs{
+    display: flex;
+}

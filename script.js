@@ -38,12 +38,11 @@ let button = document.querySelector("#btn");
 button.addEventListener("click",getVals)
 
 
-
 function getVals(){
     if(forces=='1'){
         var dist1 = document.querySelector("#f1").value
         var force1 = document.querySelector("#F1").value
-        var length = document.querySelector("f0").value
+        var length = document.querySelector("#f0").value
         let load = [[dist1,-force1]]
         
         function reactions_sfbdCalc(){
@@ -58,9 +57,36 @@ function getVals(){
             let reactions_sfbd = [Va,Vb,sf_1,sf_2,m_1]
             return reactions_sfbd
         }
+
+        let valuesForPlot = reactions_sfbdCalc()
+        console.log(valuesForPlot)
+        const xValues = []
+        const yValues = []
+            for (let x = 0; x <= length; x += 0.001) {
+                if(x <= load[0][0]){
+                    yValues.push(valuesForPlot[2])
+                    xValues.push(x);
+                }
+                else if(x >= load[0][0]){
+                yValues.push(valuesForPlot[3])
+                xValues.push(x)
+                }
+            }       
+
+    const data = [{
+    x: xValues,
+    y: yValues,
+    mode: "lines"
+    }]
+
+    const layout = {title: "SFD"}
+
+    Plotly.newPlot("SFD", data, layout)
+
     }
 
     else if(forces=='2'){
+        var length = document.querySelector("#f0").value
         var dist1 = document.querySelector("#f1").value
         var dist2 = document.querySelector("#f2").value
         var force1 = document.querySelector("#F1").value
@@ -84,6 +110,7 @@ function getVals(){
     }
 
     else if(forces=='3'){
+        var length = document.querySelector("#f0").value
         var dist1 = document.querySelector("#f1").value
         var dist2 = document.querySelector("#f2").value
         var dist3 = document.querySelector("#f3").value
@@ -108,5 +135,14 @@ function getVals(){
             let reactions_sfbd = [Va,Vb,sf_1,sf_2,sf_3,sf_4,m_1,m_2,m_3]
             return reactions_sfbd
         }
+    }
+}
+
+
+
+function plotGraph(){
+    if(forces=='1'){
+        
+
     }
 }
