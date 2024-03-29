@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>
 </head>
 <body>
@@ -13,43 +13,28 @@
 <h2>SFD and BMD</h2> 
 
 <div id="select">
-    <p id="text1">Select number of point forces</p>
-    <select id="force">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select>  
+    <p id="text1">Enter number of point forces<input type="text" id="force" class="inputBox1"></p>  
+    <p id="p0">Length of the beam<input type="text" placeholder="in m" id="length" class="inputBox1"></p><br>
     <button id="btnconfirm">Confirm</button>
-    <p id="text">(To change value, refresh the page)</p>
 </div>
 
-<div id="distance">
-    <p id="p0">Length of the beam<input type="text" placeholder="in m" id="f0" class="inputBox"></p><br>
-    <p id="p1">Distance from extreme left and Magnitude of first force<input type="text" placeholder="in m" id="f1" class="inputBox"><input type="text" placeholder="in N" id="F1" class="inputBox"></p><br>
-</div> 
-
 <div id="beamDiagram">
-<i class="fa-solid fa-down-long arrow" id="pF1"></i>
-<i class="fa-solid fa-down-long arrow" id="pF2"></i>
-<i class="fa-solid fa-down-long arrow" id="pF3"></i>
-<div id="beam"></div>
-<i class="fa-solid fa-up-long arrow" id="reactionA"></i>
-<i class="fa-solid fa-up-long arrow" id="reactionB"></i>
+    <div id="beam"></div>
 </div>
 
 <footer id="footer">
-    <button id="btn">Calculate</button>
+    <button id="btncalculate">Calculate</button>
 </footer>
 
-<p id="graph-text">Graphs --</p>
+<p style="font-size: 22px;">Graphs</p>
 
 <div id="graphs">
     <div id="SFD" style="width:650px;height:350px;"></div>
     <div id="BMD" style="width:650px;height:350px;"></div>
 </div>
 
-
 <p id="tip">If anything is stuck..please refresh the page</p>
+
 <script src="script.js"></script>
 
 </body>

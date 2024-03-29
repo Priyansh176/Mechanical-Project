@@ -4,38 +4,33 @@
     justify-content: center;
 }
 
-#btn{
+#btncalculate{
     color: black;
-    border-radius: 10px;
+    margin-left: 10px;
+    border-radius: 55px;
     height: 27px;
-    width: 75px;
-    background-color: aquamarine;
+    width: 80px;
+    background-color: #D0DB97;
+    text-align: center;
+    font-size: medium;
+    color: #181D27;
+    box-shadow: 2px 1.5px 1.5px gray;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
     background-color:azure;
 }
 
-#btn:hover , #btnconfirm:hover{
+#btncalculate:hover , #btnconfirm:hover{
     animation-duration: 0.7s;
     transform: scale(1.1);
 }
-#btn:active , #btnconfirm:active{
+#btncalculate:active , #btnconfirm:active{
     animation-duration: 0.7s;
     opacity: 0.7;
 }
 
-#select{
-    margin-top: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 700px;
-    align-items: center;
-    border-style: solid;
-    border-radius: 4px;
-    padding-right: 5px;
-}
 
 #text1{
     margin-right: 10px;
@@ -43,23 +38,17 @@ body{
     padding-left: 10px;
 }
 
-#forces{
-    height: 35px;
-    width:55px;
-    margin-right: 15px;
-    border-radius: 5px;
-}
-
-.inputBox{
+.inputBox1{
     text-align: center;
-    width: 50px;
+    height: 30px;
+    width: 45px;
     margin-left: 10px;
     margin-top: 2px;
 }
 
 h2{
     font-size: 40px;
-    border-color: rgb(85, 221, 255);
+    border-color: #254D32;
     margin: auto;
     width: 500px;
     border-style: solid;
@@ -72,148 +61,81 @@ h2{
     padding-top: 18px;
 }
 
-#beamDiagram{
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-#beam{
-    position: relative;
-    left:375px ;
-    height: 50px;
-    width: 760px;
-    background-color: rgb(74, 36, 190);
-    border: 6.9px solid black;
-}
-
-.arrow{
-    transform: scale(2,4);
-}
 
 #btnconfirm{
     color: black;
     margin-left: 10px;
     border-radius: 55px;
-    height: 45px;
-    width: 80px;
-    background-color: rgb(52, 164, 255);
+    height: 27px;
+    width: 75px;
+    background-color: #D0DB97;
     text-align: center;
     font-size: medium;
-    color: white;
+    color: #181D27;
     box-shadow: 2px 1.5px 1.5px gray;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#distance{
-    font-size: 22px;
-}
 
 #p0{
     margin-top: 10px;
     margin-bottom: 10px;
     padding-left: 10px;
+    font-size: 1.5rem;
 }
 
-#p1{
-    margin-top: 10px;
-}
-
-#reactionA{
-    position: relative;
-    left: 1138px;
-    top: 23px;
-}
-
-#reactionB{
-    position: relative;
-    left: 358px;
-    top: 23px;
-}
-
-#pF1{
-    position:relative;
-    left: 965px;
-    top: -21px;
-    visibility: hidden;
-}
-#pF2{
-    position:relative;
-    left: 530px;
-    top: -21px;
-    visibility: hidden;
-}
-#pF3{
-    position:relative;
-    left: 727px;
-    top: -21px;
-}
 
 #tip{
     text-align:right;
     margin-top: 177px;
 }
-.div1{
-    padding-right: 15px;
-}
+
 p{
     font-family: Arial, Helvetica, sans-serif;
 }
-.div2{
-    display: flex;
-    flex-direction: row;
-    width: 700px;
-    height: 50px;
-    justify-content: space-between;
-    margin-top: 20px;
-    border-color: black;
-    border-style: solid;
-    align-items: center;
-}
-#f0{
+
+#beamDiagram{
+    position: relative;
     margin-top: 50px;
-    margin-right: 20px;
-    border-radius: 3px;
-    width: 50px;
+    margin-bottom: 50px;
+}
+
+#beam{
+    width: 800px;
+    height: 80px;
+    background-color:forestgreen;
+    border: 7px solid black;
+    margin-left: 25%;
+}
+
+.arrow{
+    height: 38px;
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    margin-left: 25%;
+    transform: scale(1.5,5.5);
+}
+
+.inputBox2{
+    width: 40px;
     height: 25px;
-}
-.div3{
-    display: flex;
-    flex-direction: row;
-    width: 700px;
-    justify-content: space-between;
-    margin-top: 20px;
-    border-style: solid;
-    border-color: black;
-    padding-top: 10px;
-    align-items: center;
-}
-#div3_2{
-    margin-top: 30px;
-    padding-right: 5px;
-}
-#div3_1{
-    padding-left: 10px;
-}
-#f1,#F1,#f2,#F2,#f3,#F3{
-    height: 30px;
-    width: 60px;
-    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 25%;
 }
 
 #graphs{
     display: flex;
-    margin-top: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
 }
 
 #SFD{
-    margin-left: 90px;
     margin-right: 20px;
-}
-
-#graph-text{
-    text-align:left ;
-    margin-top: 50px;
-    margin-left: 10px;
-    font-size: 22px;
-    text-decoration: underline solid;
 }

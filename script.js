@@ -1,241 +1,133 @@
-var forces = 1
-
-var p3 = document.querySelector("#p3")
-
 let btn1 = document.querySelector("#btnconfirm")
-btn1.addEventListener("click",genLine)
+btn1.addEventListener("click",confirmVals1)
 
-function genLine(){
-    forces = document.querySelector("select").value
-    if(forces == '2'){
-        let el1 = document.createElement("p")
-        let p1 = document.querySelector("#p1")
-        el1.innerHTML = '<p id="p2">Distance from extreme left and Magnitude of second force<input type="text" placeholder="in m" id="f2" class="inputBox"><input type="text" placeholder="in N" id="F2" class="inputBox"></p><br>'
-        p1.after(el1)
-        document.querySelector("#pF1").style.visibility = "visible"
-        document.querySelector("#pF2").style.visibility = "visible"
-        document.querySelector("#pF3").style.visibility = "hidden"
-        btn1.disabled = true        
+let btn2 = document.querySelector("#btncalculate")
+btn2.addEventListener("click",calculateShearForceAndBendingMoment)
+
+function confirmVals1(){
+    let forces = Number(document.querySelector("#force").value)
+    let length = Number(document.querySelector("#length").value)
+
+    if(forces <= 0 || length <= 0){
+        alert("Enter a positive value")
     }
-    if(forces == '3'){
-        let el1 = document.createElement("p")
-        let p1 = document.querySelector("#p1")
-        el1.innerHTML = '<p id="p2">Distance from extreme left and Magnitude of second force<input type="text" placeholder="in m" id="f2" class="inputBox"><input type="text" placeholder="in N" id="F2" class="inputBox"></p><br>'
-        p1.after(el1)
-        let el2 = document.createElement("p")
-        let p2 = document.querySelector("#p2")
-        el2.innerHTML = '<p id="p3">Distance from extreme left and Magnitude of third force<input type="text" placeholder="in m" id="f3" class="inputBox"><input type="text" placeholder="in N" id="F3" class="inputBox"></p><br>'
-        p2.after(el2)
-        document.querySelector("#pF1").style.visibility = "visible"
-        document.querySelector("#pF2").style.visibility = "visible"
-        document.querySelector("#pF3").style.visibility = "visible"
-        btn1.disabled = true
+    else{
+        generateArrows(forces)
+    }
+}
+
+function generateArrows(n){
+    let beam = document.querySelector("#beam")
+    let beamlength = beam.offsetWidth
+    let distanceBetweenArrows = beamlength/(n+1)
+
+    for(let i = 1; i<=n; i++){
+        let arrow = document.createElement('i')
+        arrow.className = 'arrow fa-solid fa-down-long'
+        let position = i * distanceBetweenArrows
+        arrow.style.left = position + 'px'
+        beam.parentElement.appendChild(arrow)
+
+        let distanceHolder = document.createElement('input')
+        distanceHolder.className = 'inputBox2'
+        distanceHolder.id = "dist" + i
+        distanceHolder.style.left = position + 'px'
+        distanceHolder.style.top = 'calc(50% - 100px)'
+        distanceHolder.placeholder = 'in m'
+        beam.parentElement.appendChild(distanceHolder)
+
+        let forceHolder = document.createElement('input')
+        forceHolder.className = 'inputBox2'
+        forceHolder.id = "force" + i
+        forceHolder.style.left = position + 'px'
+        forceHolder.style.top = 'calc(50% - 140px)'
+        forceHolder.placeholder = 'in kN'
+        beam.parentElement.appendChild(forceHolder)
     }
 }
 
 
-let button = document.querySelector("#btn");
-button.addEventListener("click",getVals)
+function calculateShearForceAndBendingMoment() {
+    let forces = Number(document.querySelector("#force").value) 
+    let length = Number(document.querySelector("#length").value)
 
-
-function getVals(){
-    if(forces=='1'){
-        var dist1 = document.querySelector("#f1").value
-        var force1 = document.querySelector("#F1").value
-        var length = document.querySelector("#f0").value
-        let load = [[dist1,-force1]]
-        
-        function reactions_sfbdCalc(){
-            let Vb = (-load[0][0]*load[0][1])/length
-            let Va = -load[0][1]-Vb
-            
-            let sf_1 = Va
-            let m_1 = Va*load[0][0]
-            let sf_2 = -Vb
-        
-            let reactions_sfbd = [Va,Vb,sf_1,sf_2,m_1]
-            return reactions_sfbd
-        }
-
-        let valuesForPlot = reactions_sfbdCalc()
-
-        const xValues1 = []
-        const yValues1 = []
-        const xValues2 = [0,load[0][0],length]
-        const yValues2 = [0,valuesForPlot[4],0]
-
-        for (let x = 0; x <= length; x += 0.001) {
-            if(x <= load[0][0]){
-                yValues1.push(valuesForPlot[2])
-                xValues1.push(x);
-            }
-            else if(x >= load[0][0]){
-                yValues1.push(valuesForPlot[3])
-                xValues1.push(x)
-            }
-        }       
-
-        const data1 = [{
-            x: xValues1,
-            y: yValues1,
-            mode: "lines"
-        }]
-
-        const data2 = [{
-            x:xValues2,
-            y:yValues2,
-            mode: "lines"
-        }]
-
-        const layout1 = {title: "SFD"}
-        const layout2 = {title: "BMD"}
-
-        Plotly.newPlot("SFD", data1, layout1)
-        Plotly.newPlot("BMD", data2, layout2)
-
-        document.querySelector("#SFD").style.border = "2px solid black"
-        document.querySelector("#BMD").style.border = "2px solid black"
-
+    //Array to store values -- [distance,magnitude] of forces
+    let loads_unsorted = []
+    for (let c = 1; c <= forces; c++) {
+        loads_unsorted[c-1] = [Number(document.getElementById("dist" + c).value) , Number(document.getElementById("force" + c).value)]
     }
 
-    else if(forces=='2'){
-        var length = document.querySelector("#f0").value
-        var dist1 = document.querySelector("#f1").value
-        var dist2 = document.querySelector("#f2").value
-        var force1 = document.querySelector("#F1").value
-        var force2 = document.querySelector("#F2").value
-        let load = [[dist1,-force1],[dist2,-force2]]
-        
-        function reactions_sfbdCalc(){
-            let Vb = ((-load[0][0]*load[0][1])+(-load[1][0]*load[1][1]))/length
-            let Va = -load[0][1]-load[1][1]-Vb
-        
-            let sf_1 = Va
-            let sf_2 = Va + load[0][1]
-            let sf_3 = -Vb
-            let m_1 = Va*load[0][0]
-            let m_2 = Vb*(length-load[1][0])
-        
-            let reactions_sfbd = [Va,Vb,sf_1,sf_2,sf_3,m_1,m_2]
-            return reactions_sfbd
+    //Sort above array on the basis of distance 
+    loads = loads_unsorted.sort (
+        function (a,b) {
+            if (a[0] === b[0]) {
+                return 0;
+            } else {
+                return (a[0] < b[0]) ? -1 : 1;
+            }
         }
+    )
 
-        let valuesForPlot = reactions_sfbdCalc()
+    //Empty arrays to store shear force and bending moment values for ploting graph
+    let shearForce = []
+    let bendingMoment = []
+    let xValues = []
 
-        const xValues1 = []
-        const yValues1 = []
-        const xValues2 = [0,load[0][0],load[1][0],length]
-        const yValues2 = [0,valuesForPlot[5],valuesForPlot[6],0]
+    //Reactions at supports
+    let i = 0
+    let reactionA = 0
+    let reactionB = 0
 
-        for (let x = 0; x <= length; x += 0.001) {
-            if(x <= load[0][0]){
-                yValues1.push(valuesForPlot[2])
-                xValues1.push(x);
+    for(i in loads){
+        reactionA += loads[i][1] * (length - loads[i][0]) / length
+        reactionB += loads[i][1] * loads[i][0] / length
+    } 
+
+    //Calculate shear force and bending moment at particular points on the beam
+    for (let x = 0; x <= length; x+=0.001) {
+        //Shear force
+        let j = 0
+        let shear = reactionA
+        for(j in loads){
+            if (loads[j][0] < x) {
+                shear -= loads[j][1]
             }
-            else if(x >= load[0][0] && x<=load[1][0]){
-                yValues1.push(valuesForPlot[3])
-                xValues1.push(x)
+        }
+        shearForce.push(shear)
+
+        //Bending moment at x
+        let moment = reactionA * x
+        let k = 0
+        for(k in loads){
+            if (loads[k][0] < x) {
+                moment -= loads[k][1] * (x - loads[k][0])
             }
-            else if(x >= load[1][0]){
-                yValues1.push(valuesForPlot[4])
-                xValues1.push(x)
-            }
-        }       
-
-        const data1 = [{
-            x: xValues1,
-            y: yValues1,
-            mode: "lines"
-        }]
-
-        const data2 = [{
-            x:xValues2,
-            y:yValues2,
-            mode: "lines"
-        }]
-
-        const layout1 = {title: "SFD"}
-        const layout2 = {title: "BMD"}
-
-        Plotly.newPlot("SFD", data1, layout1)
-        Plotly.newPlot("BMD", data2, layout2)
-
-        document.querySelector("#SFD").style.border = "2px solid black"
-        document.querySelector("#BMD").style.border = "2px solid black"
-
+        }
+        bendingMoment.push(moment)
+        
+        xValues.push(x)
     }
 
-    else if(forces=='3'){
-        var length = document.querySelector("#f0").value
-        var dist1 = document.querySelector("#f1").value
-        var dist2 = document.querySelector("#f2").value
-        var dist3 = document.querySelector("#f3").value
-        var force1 = document.querySelector("#F1").value
-        var force2 = document.querySelector("#F2").value
-        var force3 = document.querySelector("#F3").value
-        let load = [[dist1,-force1],[dist2,-force2],[dist3,-force3]]
-        
-        function reactions_sfbdCalc(){
-            let Vb = ((-load[0][0]*load[0][1])+(-load[1][0]*load[1][1])+(-load[2][0]*load[2][1]))/length
-            let Va = -load[0][1]-load[1][1]-load[2][1]-Vb
-        
-            let sf_1 = Va
-            let sf_2 = Va + load[0][1]
-            let sf_3 = -load[2][1] - Vb
-            let sf_4 = -Vb
-            let m_1 = Va*load[0][0]
-            let m_2 = Va*load[1][0] + load[0][1]*(load[1][0]-load[0][0])
-            let m_3 = Vb*(length-load[2][0])
-        
-            let reactions_sfbd = [Va,Vb,sf_1,sf_2,sf_3,sf_4,m_1,m_2,m_3]
-            return reactions_sfbd
-        }
+    plotGraph(shearForce, bendingMoment, xValues)
+}
 
-        let valuesForPlot = reactions_sfbdCalc()
 
-        const xValues1 = []
-        const yValues1 = []
-        const xValues2 = [0,load[0][0],load[1][0],load[2][0],length]
-        const yValues2 = [0,valuesForPlot[6],valuesForPlot[7],valuesForPlot[8],0]
-
-        for (let x = 0; x <= length; x += 0.001) {
-            if(x <= load[0][0]){
-                yValues1.push(valuesForPlot[2])
-                xValues1.push(x);
-            }
-            else if(x >= load[0][0] && x<=load[1][0]){
-                yValues1.push(valuesForPlot[3])
-                xValues1.push(x)
-            }
-            else if(x >= load[1][0] && x<=load[2][0]){
-                yValues1.push(valuesForPlot[4])
-                xValues1.push(x)
-            }
-            else if(x >= load[2][0]){
-                yValues1.push(valuesForPlot[5])
-                xValues1.push(x)
-            }
-        }       
-
-        const data1 = [{
-        x: xValues1,
-        y: yValues1,
-        mode: "lines"
+function plotGraph(shearForce, bendingMoment, xValues){
+    const data1 = [{
+        x: xValues,
+        y: shearForce,
+        mode: "lines",
+      }]
+      
+      const data2 = [{
+          x: xValues,
+          y: bendingMoment,
+          mode: "lines",
         }]
-
-        const data2 = [{
-            x:xValues2,
-            y:yValues2,
-            mode: "lines"
-        }]
-
-        const layout1 = {title: "SFD"}
-        const layout2 = {title: "BMD"}
-
-        Plotly.newPlot("SFD", data1, layout1)
-        Plotly.newPlot("BMD", data2, layout2)
-
-        document.querySelector("#SFD").style.border = "2px solid black"
-        document.querySelector("#BMD").style.border = "2px solid black"
-    }
+      
+      const layout1 = {title: "SFD"}
+      const layout2 = {title: "BMD"}
+      
+      Plotly.newPlot("SFD", data1, layout1)
+      Plotly.newPlot("BMD", data2, layout2)
 }
