@@ -119,6 +119,13 @@ function calculateShearForceAndBendingMoment() {
 
 
 function plotGraph(shearForce, bendingMoment, xValues){
+
+    let graph = document.createElement('div')
+    graph.innerHTML = '<p style="font-size: 22px;">Graphs</p><div id="graphs"><div id="SFD" style="width:650px;height:350px;"></div><div id="BMD" style="width:650px;height:350px;"></div></div>'
+    
+    let footer = document.querySelector('#footer')
+    footer.after(graph)
+
     const data1 = [{
         x: xValues,
         y: shearForce,
