@@ -22,6 +22,20 @@ function generateArrows(n){
     let beamlength = beam.offsetWidth
     let distanceBetweenArrows = beamlength/(n+1)
 
+    let arrowReact1 = document.createElement('i')
+    arrowReact1.className = 'arrow fa-solid fa-up-long'
+    arrowReact1.style.left = 0 + 'px'
+    arrowReact1.style.top = 175 + 'px'
+    arrowReact1.id = 'reactionA'
+    beam.parentElement.appendChild(arrowReact1)
+
+    let arrowReact2 = document.createElement('i')
+    arrowReact2.className = 'arrow fa-solid fa-up-long'
+    arrowReact2.style.left = beamlength-10 + 'px'
+    arrowReact2.style.top = 175 + 'px'
+    arrowReact2.id = 'reactionB'
+    beam.parentElement.appendChild(arrowReact2)
+
     for(let i = 1; i<=n; i++){
         let arrow = document.createElement('i')
         arrow.className = 'arrow fa-solid fa-down-long'
