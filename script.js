@@ -18,6 +18,7 @@ function confirmVals1(){
 
 function generateArrows(n){
     let beam = document.querySelector("#beam")
+    let beamDiagram = document.querySelector("#beamDiagram")
     let beamlength = beam.offsetWidth
     let distanceBetweenArrows = beamlength/(n+1)
 
@@ -44,6 +45,11 @@ function generateArrows(n){
         forceHolder.placeholder = 'in kN'
         beam.parentElement.appendChild(forceHolder)
     }
+
+    let text2 = document.createElement('p')
+    text2.id = "text2"
+    text2.innerHTML = 'Enter magnitude of force ---> <br>Enter distance from left end of the beam --->'
+    beamDiagram.parentElement.appendChild(text2)
 }
 
 

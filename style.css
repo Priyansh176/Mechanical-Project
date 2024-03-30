@@ -96,7 +96,7 @@ p{
 
 #beamDiagram{
     position: relative;
-    margin-top: 50px;
+    margin-top: 150px;
     margin-bottom: 50px;
 }
 
@@ -138,4 +138,13 @@ p{
 
 #SFD{
     margin-right: 20px;
+}
+
+#text2{
+    margin: 0px 0px 0px 0px;
+    line-height: 40px;
+    position: absolute;
+    top: 305px;
+    left: 130px;
+    text-align: right;
 }
