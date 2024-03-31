@@ -17,6 +17,11 @@ function confirmVals1(){
 }
 
 function generateArrows(n){
+    let arrows = document.querySelector('#arrows')
+    arrows.innerHTML = null
+    let sfdbmd = document.querySelector('#graph')
+    sfdbmd.innerHTML = null
+    
     let beam = document.querySelector("#beam")
     let beamDiagram = document.querySelector("#beamDiagram")
     let beamlength = beam.offsetWidth
@@ -27,21 +32,21 @@ function generateArrows(n){
     arrowReact1.style.left = 0 + 'px'
     arrowReact1.style.top = 175 + 'px'
     arrowReact1.id = 'reactionA'
-    beam.parentElement.appendChild(arrowReact1)
+    arrows.appendChild(arrowReact1)
 
     let arrowReact2 = document.createElement('i')
     arrowReact2.className = 'arrow fa-solid fa-up-long'
     arrowReact2.style.left = beamlength-10 + 'px'
     arrowReact2.style.top = 175 + 'px'
     arrowReact2.id = 'reactionB'
-    beam.parentElement.appendChild(arrowReact2)
+    arrows.appendChild(arrowReact2)
 
     for(let i = 1; i<=n; i++){
         let arrow = document.createElement('i')
         arrow.className = 'arrow fa-solid fa-down-long'
         let position = i * distanceBetweenArrows
         arrow.style.left = position + 'px'
-        beam.parentElement.appendChild(arrow)
+        arrows.appendChild(arrow)
 
         let distanceHolder = document.createElement('input')
         distanceHolder.className = 'inputBox2'
@@ -49,7 +54,7 @@ function generateArrows(n){
         distanceHolder.style.left = position + 'px'
         distanceHolder.style.top = 'calc(50% - 100px)'
         distanceHolder.placeholder = 'in m'
-        beam.parentElement.appendChild(distanceHolder)
+        arrows.appendChild(distanceHolder)
 
         let forceHolder = document.createElement('input')
         forceHolder.className = 'inputBox2'
@@ -57,7 +62,7 @@ function generateArrows(n){
         forceHolder.style.left = position + 'px'
         forceHolder.style.top = 'calc(50% - 140px)'
         forceHolder.placeholder = 'in kN'
-        beam.parentElement.appendChild(forceHolder)
+        arrows.appendChild(forceHolder)
     }
 
     let text2 = document.createElement('p')
@@ -134,11 +139,12 @@ function calculateShearForceAndBendingMoment() {
 
 function plotGraph(shearForce, bendingMoment, xValues){
 
+    let sfdbmd = document.querySelector('#graph')
+    sfdbmd.innerHTML = null
+
     let graph = document.createElement('div')
     graph.innerHTML = '<p style="font-size: 22px;">Graphs</p><div id="graphs"><div id="SFD" style="width:650px;height:350px;"></div><div id="BMD" style="width:650px;height:350px;"></div></div>'
-    
-    let footer = document.querySelector('#footer')
-    footer.after(graph)
+    sfdbmd.appendChild(graph)
 
     const data1 = [{
         x: xValues,
