@@ -87,7 +87,7 @@ h2{
 
 #tip{
     text-align:right;
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 p{
@@ -147,4 +147,24 @@ p{
     top: 305px;
     left: 130px;
     text-align: right;
+}
+
+#copyright{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+}
+
+#reactA{
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    margin-left: 25%;
+}
+
+#reactB{
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    margin-left: 25%;
 }

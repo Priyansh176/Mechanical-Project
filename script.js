@@ -75,6 +75,7 @@ function generateArrows(n){
 function calculateShearForceAndBendingMoment() {
     let forces = Number(document.querySelector("#force").value) 
     let length = Number(document.querySelector("#length").value)
+    let beamlength = document.querySelector("#beam").offsetWidth
 
     //Array to store values -- [distance,magnitude] of forces
     let loads_unsorted = []
@@ -132,6 +133,22 @@ function calculateShearForceAndBendingMoment() {
         
         xValues.push(x)
     }
+
+    let arrows = document.querySelector('#arrows')
+
+    let reactA = document.createElement('p')
+    reactA.innerText = 'Ra = ' + reactionA
+    reactA.id = 'reactA'
+    reactA.style.top = 175 + 'px'
+    reactA.style.left = -20 + 'px'
+    arrows.appendChild(reactA)
+
+    let reactB = document.createElement('p')
+    reactB.innerText = 'Rb = ' + reactionB
+    reactB.id = 'reactB'
+    reactB.style.top = 175 + 'px'
+    reactB.style.left = beamlength-30 + 'px'
+    arrows.appendChild(reactB)
 
     plotGraph(shearForce, bendingMoment, xValues)
 }
